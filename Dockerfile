@@ -9,6 +9,3 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-
-# For prod [ "npm", "run", "start" ]
-CMD [ "npm", "run", "start:dev" ]

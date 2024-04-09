@@ -4,6 +4,6 @@ import 'reflect-metadata';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.APP_HOST);
+  await app.listen(process.env.APP_PORT);
 }
 bootstrap();

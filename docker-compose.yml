@@ -9,7 +9,7 @@ services:
       - db
     environment:
       DATABASE_HOST: db
-      DATABASE_PORT: 5432
+      DATABASE_PORT: ${DB_PORT}
   pgadmin:
     depends_on:
       - db
@@ -30,7 +30,4 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
-
-volumes:
-  db_data:
+      - ${DB_PORT}:5432

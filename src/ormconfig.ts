@@ -5,8 +5,8 @@ require('dotenv').config();
 
 const config: TypeOrmModuleOptions & { cli: { migrationDir: string } } = {
   type: 'postgres',
-  host: process.env.APP_HOST || 'localhost',
-  port: 5432,
+  host: process.env.DB_HOST || 'localhost',
+  port: parseInt(process.env.DB_PORT, 10) || 5432,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
