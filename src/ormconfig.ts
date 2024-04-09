@@ -1,9 +1,8 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
-
-const config: TypeOrmModuleOptions & { cli: { migrationDir: string } } = {
+const config: TypeOrmModuleOptions & {
+  cli: { migrationsDir: string };
+} = {
   type: 'postgres',
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT, 10) || 5432,
@@ -13,7 +12,7 @@ const config: TypeOrmModuleOptions & { cli: { migrationDir: string } } = {
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   cli: {
-    migrationDir: 'src/migrations',
+    migrationsDir: 'src/migrations',
   },
 };
 
