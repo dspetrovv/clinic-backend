@@ -19,7 +19,13 @@ export class UserService {
   }
 
   async findAll(): Promise<User[]> {
-    return await this.userRepository.find();
+    let resp = [new User()];
+    try {
+      resp = await this.userRepository.find();
+    } catch (err) {
+      throw new Error(err);
+    }
+    return resp;
   }
 
   async findOne(id: number): Promise<User> {

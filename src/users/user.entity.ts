@@ -5,9 +5,11 @@ import {
   BeforeInsert,
   BeforeUpdate,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { IsEmail, IsNotEmpty, Length, IsOptional } from 'class-validator';
 import * as bcrypt from 'bcrypt';
+import { Role } from '../roles/role.entity';
 
 @Entity('users')
 export class User {
@@ -40,7 +42,7 @@ export class User {
 
   @IsNotEmpty()
   @Column()
-  role_id: number;
+  roleId: number;
 
   @Column({ default: false })
   @IsOptional()
@@ -52,6 +54,9 @@ export class User {
 
   @UpdateDateColumn()
   birthdate?: string;
+
+  @ManyToOne(() => Role, (role) => role.users)
+  role: Role;
 
   @BeforeInsert()
   @BeforeUpdate()
