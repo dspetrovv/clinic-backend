@@ -1,6 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  ManyToMany,
+  OneToMany,
+  JoinTable,
+} from 'typeorm';
 import { User } from '../users/user.entity';
 import { IsDate, IsOptional, IsString } from 'class-validator';
+import { MedicalStaff } from 'src/medical-staff/medical-staff.entity';
+import { MedicalHistory } from 'src/medical-history/medical-history.entity';
 
 @Entity('patients')
 export class Patient {
@@ -28,4 +38,11 @@ export class Patient {
 
   @ManyToOne(() => User)
   user: User;
+
+  @OneToMany(() => MedicalHistory, (medicalHistory) => medicalHistory.patient)
+  medicalHistory: MedicalHistory[];
+
+  @ManyToMany(() => MedicalStaff, (medicalStaff) => medicalStaff.patients)
+  @JoinTable()
+  medicalStaff: MedicalStaff[];
 }

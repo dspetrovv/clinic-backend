@@ -1,8 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { User } from '../users/user.entity';
 import { Specialty } from '../specialties/specialty.entity';
 import { Cabinet } from '../cabinets/cabinet.entity';
 import { IsOptional } from 'class-validator';
+import { Patient } from 'src/patients/patient.entity';
 
 @Entity('medical_staff')
 export class MedicalStaff {
@@ -22,4 +30,8 @@ export class MedicalStaff {
   @IsOptional()
   @ManyToOne(() => Cabinet)
   cabinet: Cabinet;
+
+  @ManyToMany(() => Patient, (patient) => patient.medicalStaff)
+  @JoinTable()
+  patients: MedicalStaff[];
 }
