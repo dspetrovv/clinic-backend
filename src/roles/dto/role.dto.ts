@@ -8,6 +8,5 @@ export class RoleDto {
 
   @IsOptional()
   @IsString()
-  @Length(1, 255)
   readonly description?: string;
 }

@@ -9,18 +9,18 @@ import {
 export class CreateMedicalStaffDto {
   @IsNotEmpty()
   @IsNumber()
-  userId: number;
+  readonly userId: number;
 
   @IsNotEmpty()
   @IsNumber()
-  specialtyId: number;
+  readonly specialtyId: number;
 
   @IsOptional()
   @Length(6, 10)
   @IsString()
-  phone?: string;
+  readonly phone?: string;
 
   @IsNotEmpty()
   @IsNumber()
-  cabinetId: number;
+  readonly cabinetId: number;
 }

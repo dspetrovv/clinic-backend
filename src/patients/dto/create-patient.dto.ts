@@ -2,21 +2,21 @@ import { IsOptional, IsString, IsDate, IsNumber } from 'class-validator';
 
 export class CreatePatientDto {
   @IsNumber()
-  userId: number;
+  readonly userId: number;
 
   @IsOptional()
   @IsDate()
-  birthday?: Date;
+  readonly birthday?: Date;
 
   @IsOptional()
   @IsString()
-  address?: string;
+  readonly address?: string;
 
   @IsOptional()
   @IsString()
-  phone?: string;
+  readonly phone?: string;
 
   @IsOptional()
   @IsString()
-  passport?: string;
+  readonly passport?: string;
 }

@@ -1,15 +1,20 @@
-import { IsString, IsDate, IsNumber } from 'class-validator';
+import { IsString, IsDate, IsNumber, IsOptional } from 'class-validator';
 
 export class CreateMedicalHistoryDto {
   @IsNumber()
-  patientId: number;
+  readonly patientId: number;
 
   @IsString()
-  diagnosis: string;
+  readonly diagnosis: string;
 
+  @IsOptional()
   @IsString()
-  treatmentPlan: string;
+  readonly treatmentPlan?: string;
 
   @IsDate()
-  visitDate: Date;
+  readonly visitDate: Date;
+
+  @IsOptional()
+  @IsNumber()
+  readonly payment?: number;
 }

@@ -13,35 +13,35 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   @Length(2, 20)
-  firstName: string;
+  readonly firstName: string;
 
   @IsNotEmpty()
   @IsString()
   @Length(2, 20)
-  lastName: string;
+  readonly lastName: string;
 
   @IsOptional()
   @IsString()
   @Length(2, 20)
-  middleName?: string;
+  readonly middleName?: string;
 
   @IsNotEmpty()
   @IsEmail()
-  email: string;
+  readonly email: string;
 
   @IsNotEmpty()
   @IsString()
-  password: string;
+  readonly password: string;
 
   @IsNotEmpty()
   @IsNumber()
-  role_id: number;
+  readonly role_id: number;
 
   @IsOptional()
   @IsBoolean()
-  isActive?: boolean;
+  readonly isActive?: boolean;
 
   @IsOptional()
   @IsDateString()
-  birthdate?: string;
+  readonly birthdate?: string;
 }

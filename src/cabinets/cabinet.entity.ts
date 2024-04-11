@@ -14,7 +14,6 @@ export class Cabinet {
 
   @IsNotEmpty()
   @IsString()
-  @Length(2, 50)
-  @Column()
+  @Column({ type: 'text' })
   description: string;
 }

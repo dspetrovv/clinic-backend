@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { IsString } from 'class-validator';
-import { Patient } from 'src/patients/patient.entity';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { Patient } from '../patients/patient.entity';
 
 @Entity('medical_history')
 export class MedicalHistory {
@@ -11,9 +11,15 @@ export class MedicalHistory {
   @Column()
   diagnosis: string;
 
+  @IsOptional()
   @IsString()
-  @Column({ type: 'text' })
-  treatmentPlan: string;
+  @Column({ type: 'text', nullable: true })
+  treatmentPlan?: string;
+
+  @IsOptional()
+  @IsNumber()
+  @Column({ type: 'float', nullable: true })
+  payment?: number;
 
   @Column({ type: 'timestamp without time zone' })
   visitDate: Date;

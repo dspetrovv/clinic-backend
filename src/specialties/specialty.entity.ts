@@ -11,7 +11,6 @@ export class Specialty {
   name: string;
 
   @IsOptional()
-  @Column({ nullable: true })
-  @Length(2, 50)
+  @Column({ nullable: true, type: 'text' })
   description?: string;
 }

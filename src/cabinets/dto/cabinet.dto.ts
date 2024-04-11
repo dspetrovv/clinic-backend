@@ -4,10 +4,9 @@ export class CabinetDto {
   @IsNotEmpty()
   @Length(1, 6)
   @IsString()
-  number: string;
+  readonly number: string;
 
   @IsNotEmpty()
-  @Length(2, 50)
   @IsString()
-  description: string;
+  readonly description: string;
 }

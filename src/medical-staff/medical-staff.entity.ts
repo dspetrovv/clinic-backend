@@ -10,7 +10,7 @@ import { User } from '../users/user.entity';
 import { Specialty } from '../specialties/specialty.entity';
 import { Cabinet } from '../cabinets/cabinet.entity';
 import { IsOptional } from 'class-validator';
-import { Patient } from 'src/patients/patient.entity';
+import { Patient } from '../patients/patient.entity';
 
 @Entity('medical_staff')
 export class MedicalStaff {
@@ -28,8 +28,8 @@ export class MedicalStaff {
   phone?: string;
 
   @IsOptional()
-  @ManyToOne(() => Cabinet)
-  cabinet: Cabinet;
+  @ManyToOne(() => Cabinet, { nullable: true })
+  cabinet?: Cabinet;
 
   @ManyToMany(() => Patient, (patient) => patient.medicalStaff)
   @JoinTable()
