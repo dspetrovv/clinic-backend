@@ -64,7 +64,8 @@ export class User {
   lastUpdateDate?: Date;
 
   @IsDate()
-  @Column({ type: 'date' })
+  @IsOptional()
+  @Column({ type: 'date', nullable: true })
   birthdate?: string;
 
   @ManyToOne(() => Role, (role) => role.users)
